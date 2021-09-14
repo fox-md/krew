@@ -1,0 +1,28 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: ext-role-check
+spec:
+  homepage: https://github.com/cyberark/kubernetes-rbac-audit
+  shortDescription: "Scan for k8s RBAC for risky roles."
+  version: "v0.1.0"
+  caveats: |
+      Usage:
+        kubectl ext-role-check
+  description: |
+    A Python tool that scans the Kubernetes RBAC for risky roles.
+    The tool is a part of the "Kubernetes Pentest Methdology" blog post series.
+  platforms:
+  - selector:
+      matchExpressions:
+      - key: "os"
+        operator: "In"
+        values:
+        - darwin
+        - linux
+    uri: http://krew.gumeniuc.me/ext-role-check/archive/v0.1.0.tar.gz
+    sha256: 355c0144eb2a6b40f7e7a793ed1fae9028a5ba8bc741e23ad1ee8391fa3343ca
+    bin: kubectl-ext-role-check.py
+    files:
+    - from: "kubectl-ext-role-check.py"
+      to: "."
